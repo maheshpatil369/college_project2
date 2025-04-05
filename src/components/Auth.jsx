@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Github, AppWindow as Windows, Facebook, Linkedin } from 'lucide-react';
@@ -33,7 +34,9 @@ function Auth() {
 
     setLoading(true);
     const endpoint = isLogin ? '/login' : '/register';
-    const payload = isLogin ? { email: formData.email, password: formData.password } : formData;
+    const payload = isLogin
+      ? { email: formData.email, password: formData.password }
+      : formData;
 
     try {
       const response = await fetch(`http://localhost:5000${endpoint}`, {
@@ -41,7 +44,7 @@ function Auth() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      
+
       const data = await response.json();
       setLoading(false);
       if (response.ok) {
@@ -57,40 +60,84 @@ function Auth() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0f14] flex items-center justify-center p-4">
-      <div className="w-full max-w-[1000px] border border-gray-500 rounded-lg p-4 bg-[#1e8074] rounded-2xl overflow-hidden flex shadow-2xl">
-        <div className="w-full md:w-1/2 p-8">
+    <div className="min-h-screen bg-[#0a0f14] flex items-center justify-center px-4">
+      <div className="w-full max-w-4xl rounded-2xl overflow-hidden shadow-xl flex flex-col md:flex-row bg-white/5 backdrop-blur-lg border border-white/10">
+        
+        {/* Left Panel - Form */}
+        <div className="w-full md:w-1/2 bg-[#105e56] p-8 flex flex-col justify-center">
           <h1 className="text-3xl font-bold text-white mb-8">RAPIDOC</h1>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             {!isLogin && (
-              <input type="text" name="name" placeholder="Full Name" required className="input-field" onChange={(e) => setFormData({...formData, name: e.target.value})} />
+              <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                required
+                className="w-full px-4 py-2 rounded-md bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/40"
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              />
             )}
-            <input type="email" name="email" placeholder="Email" required className="input-field" onChange={(e) => setFormData({...formData, email: e.target.value})} />
-            <input type="password" name="password" placeholder="Password" required className="input-field" onChange={(e) => setFormData({...formData, password: e.target.value})} />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              className="w-full px-4 py-2 rounded-md bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/40"
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              className="w-full px-4 py-2 rounded-md bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/40"
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            />
 
-            <button type="submit" className="w-full bg-teal-900 text-white py-3 rounded-lg hover:bg-teal-950 transition-colors" disabled={loading}>
+            <button
+              type="submit"
+              className="w-full bg-white/10 text-white py-2 rounded-md hover:bg-white/20 transition-colors"
+              disabled={loading}
+            >
               {loading ? 'Processing...' : isLogin ? 'Login' : 'Register'}
             </button>
           </form>
 
-          <p className="text-white/60 text-center mt-6">
+          <div className="text-center mt-6">
+            <p className="text-white/70">or continue with</p>
+            <div className="flex justify-center gap-4 mt-4">
+              {[Github, Windows, Facebook, Linkedin].map((Icon, i) => (
+                <button key={i} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+                  <Icon className="w-5 h-5 text-white" />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <p className="text-white/70 text-center mt-6 text-sm">
             {isLogin ? "Forgot password?" : "Already have an account?"}{' '}
-            <button onClick={() => setIsLogin(!isLogin)} className="text-white underline hover:text-white/80">
+            <button
+              onClick={() => setIsLogin(!isLogin)}
+              className="text-white underline hover:text-white/80"
+            >
               {isLogin ? 'Register' : 'Login'}
             </button>
           </p>
         </div>
 
-        <div className="border border-gray-700 rounded-lg p-16 hidden md:block w-1/2 bg-cover bg-center" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1574631091989-67a56586dacc?q=80&w=2030&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")' }}>
-          <div className="h-full w-full backdrop-blur-sm flex flex-col items-center justify-center text-white p-8">
-            <h2 className="text-4xl font-bold mb-4">Hello, Friend!</h2>
-            <p className="text-center mb-6">Enter your personal details and start your journey with us.</p>
-            <button onClick={() => setIsLogin(!isLogin)} className="px-8 py-3 border-2 border-white rounded-lg hover:bg-white hover:text-teal-800 transition-colors">
-              {isLogin ? 'Register' : 'Login'}
-            </button>
-          </div>
+        {/* Right Panel - Welcome */}
+        <div className="w-full md:w-1/2 bg-gradient-to-br from-cyan-500 to-indigo-600 text-white flex flex-col items-center justify-center p-10">
+          <h2 className="text-3xl font-bold mb-2">Hello, Friend!</h2>
+          <p className="mb-6 text-center">Enter your personal details and start journey with us</p>
+          <button
+            onClick={() => setIsLogin(!isLogin)}
+            className="px-6 py-2 border-2 border-white rounded-md hover:bg-white hover:text-teal-900 transition-all"
+          >
+            {isLogin ? 'Register' : 'Login'}
+          </button>
         </div>
+
       </div>
     </div>
   );
