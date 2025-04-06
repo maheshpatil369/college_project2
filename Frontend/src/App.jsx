@@ -23,6 +23,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Auth from './components/Auth';
 import Home from './components/Home';
+import { BookAppointmentPage, FindDoctorPage, HomePage } from './components/Apointment';
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
         <Route path="/home" element={<Home />} />
         {/* Catch-all route for undefined paths */}
         <Route path="*" element={<Auth />} />
+        <Route path="/apo" element={< HomePage/>} />
+        <Route path="/apoFind" element={< FindDoctorPage/>} />
+        <Route path="/apoBook" element={< BookAppointmentPage/>} />
       </Routes>
     </Router>
   );
