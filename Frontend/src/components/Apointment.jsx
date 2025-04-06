@@ -266,7 +266,7 @@ function Footer() {
         </div>
 
         <div className="mt-8 pt-4 border-t border-teal-800 text-center text-sm">
-          <p>Follow Us:</p>
+          <p></p>
           <div className="flex justify-center space-x-4 mt-2">{/* Social media icons would go here */}</div>
         </div>
       </div>
