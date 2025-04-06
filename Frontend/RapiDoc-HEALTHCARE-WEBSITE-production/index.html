@@ -91,7 +91,47 @@
         <li><a href="#doctors"><i class="bi bi-person-circle"></i> Doctor</a></li>
         <li><a href="#contact"><i class="bi bi-telephone"></i> Contact us</a></li>
         <li><a href="#feedback"><i class="bi bi-star"></i> Rate Us</a></li>
-        <li><a href="http://localhost:5173/"><i class="bi bi-box-arrow-right"></i> Sign in/Sign up</a></li>
+        <li>
+          
+          <!-- <a id="auth-btn" href="http://localhost:5173/">
+          <i class="bi bi-box-arrow-right"></i> Sign in/Sign up
+        </a>
+        <span id="user-dropdown" class="d-none">
+          <i class="bi bi-person-circle"></i>
+          <span id="username"></span>
+          <button id="logout-btn" class="btn btn-sm btn-danger ms-2">Logout</button>
+        </span> -->
+
+        
+        <li class="nav-item dropdown" id="auth-section">
+          <!-- Shown ONLY when user is logged in -->
+          <a
+            id="userDropdown"
+            class="nav-link dropdown-toggle text-white d-none"
+            href="http://localhost:5173/"
+
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-person-circle"></i> <span id="username">User</span>
+          </a>
+        
+          <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end bg-dark" aria-labelledby="userDropdown">
+            <li>
+              <button class="dropdown-item text-danger" id="logout-btn">
+                <i class="bi bi-box-arrow-left"></i> Logout
+              </button>
+            </li>
+          </ul>
+        </li>
+        
+
+
+
+
+
+        </li>
         <a href="Html-Files/Doctor Experience.html"><button class="btn1">Find a Doctor</button></a>
         
     </nav>
@@ -766,4 +806,31 @@
   <div id="progressBar"></div>
   <script src="js/patientportal_loginjs.js"></script>
   <script src="js/popupfeedback.js"></script>
+  <script>
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userDropdown = document.getElementById('userDropdown');
+    const usernameSpan = document.getElementById('username');
+    const logoutBtn = document.getElementById('logout-btn');
+  
+    if (user && user.name) {
+      userDropdown.classList.remove('d-none');
+      usernameSpan.textContent = user.name;
+    } else {
+      // User is not logged in → hide whole section
+      document.getElementById('auth-section').style.display = 'none';
+    }
+  
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('user');
+      location.reload();
+    });
+  </script>
+  
+  
+   
 </body>
+
+
+
+
+

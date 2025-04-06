@@ -1,6 +1,4 @@
-
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Github, AppWindow as Windows, Facebook, Linkedin } from 'lucide-react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,8 +12,6 @@ function Auth() {
     password: '',
     name: ''
   });
-
-  const navigate = useNavigate();
 
   const validateForm = () => {
     if (!formData.email || !formData.password || (!isLogin && !formData.name)) {
@@ -54,7 +50,10 @@ function Auth() {
       setLoading(false);
       if (response.ok) {
         toast.success(data.message);
-        navigate('/home');
+        localStorage.setItem('user', JSON.stringify(data.user));
+
+        // ✅ Redirect to static HTML page
+        window.location.href = '/RapiDoc-HEALTHCARE-WEBSITE-production/index.html';
       } else {
         toast.error(data.error);
       }
@@ -72,8 +71,6 @@ function Auth() {
         transition={{ duration: 0.6 }}
         className="w-full max-w-4xl rounded-2xl overflow-hidden shadow-xl flex flex-col md:flex-row bg-white/5 backdrop-blur-lg border border-white/10"
       >
-
-        {/* Left Panel - Form */}
         <AnimatePresence mode="wait">
           <motion.div
             key={isLogin ? 'login' : 'register'}
@@ -145,7 +142,7 @@ function Auth() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Right Panel - Welcome */}
+        {/* Right Panel */}
         <div className="w-full md:w-1/2 bg-gradient-to-br from-cyan-500 to-indigo-600 text-white flex flex-col items-center justify-center p-10">
           <h2 className="text-3xl font-bold mb-2">Hello, Friend!</h2>
           <p className="mb-6 text-center">Enter your personal details and start journey with us</p>
@@ -156,7 +153,6 @@ function Auth() {
             {isLogin ? 'Register' : 'Login'}
           </button>
         </div>
-
       </motion.div>
     </div>
   );
