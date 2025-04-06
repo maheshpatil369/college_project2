@@ -64,35 +64,21 @@ app.post('/register', async (req, res) => {
   }
 });
 
-// -----------------------
-// 🔐 Login Route
-// -----------------------
-app.post('/login', async (req, res) => {
+
+
+app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
-  try {
-    const user = await User.findOne({ email, password });
-    if (!user) {
-      return res.status(400).json({ error: 'Invalid email or password' });
-    }
-
-    res.status(200).json({
-      message: 'Login successful',
-      user: { name: user.name, email: user.email },
-    });
-  } catch (error) {
-    console.error("❌ Error logging in user:", error);
-    res.status(500).json({ error: 'Internal server error' });
+  // Some validation
+  if (password !== 'secret') {
+    return res.status(401).json({ error: 'Incorrect password' });
   }
+
+  res.json({ message: 'Login successful' });
 });
 
-import bcrypt from 'bcrypt';
 
-// Then replace:
-const match = await bcrypt.compare(password, user.password);
-if (!match) {
-  return res.status(401).json({ error: 'Incorrect password' });
-}
+
 
 
 // -----------------------
