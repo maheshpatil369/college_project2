@@ -92,7 +92,21 @@ const doctors = [
   },
   {
     id: 11,
-    name: "Dr. Ranj",
+    name: "Dr. God",
+    specialization: "Specialization: Cardiologist",
+    experience: "Experience: 9 years",
+    fee: "Fee: ₹500",
+  },
+  {
+    id: 11,
+    name: "Dr. Gayatri",
+    specialization: "Specialization: Cardiologist",
+    experience: "Experience: 9 years",
+    fee: "Fee: ₹500",
+  },
+  {
+    id: 11,
+    name: "Dr. Raam",
     specialization: "Specialization: Cardiologist",
     experience: "Experience: 9 years",
     fee: "Fee: ₹500",
@@ -429,6 +443,10 @@ export function BookAppointmentPage() {
                 <option value="">Select a Doctor</option>
                 <option value="Dr. Ram">Dr. Ram</option>
                 <option value="Dr. Rina">Dr. Rina</option>
+                <option value="Dr. Rina">Dr. God</option>
+                <option value="Dr. Rina">Dr. Gayatri</option>
+                <option value="Dr. Rina">Dr. Yash</option>
+                <option value="Dr. Rina">Dr. Priyanka</option>
                 <option value="Dr. Ganesh">Dr. Ganesh</option>
                 <option value="Dr. Arpa">Dr. Arpa</option>
               </select>
