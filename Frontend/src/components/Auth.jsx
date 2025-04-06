@@ -50,11 +50,16 @@ function Auth() {
       setLoading(false);
       if (response.ok) {
         toast.success(data.message);
-        localStorage.setItem('user', JSON.stringify(data.user));
-
-        // ✅ Redirect to static HTML page
-        window.location.href = '/RapiDoc-HEALTHCARE-WEBSITE-production/index.html';
-      } else {
+      
+        const token = JSON.stringify(data.user)
+        // Save user data in localStorage (React app)
+        localStorage.setItem('user', token);
+      
+      
+        // ✅ Redirect to static HTML page with token in query
+        window.location.href = `http://127.0.0.1:5500/RapiDoc-HEALTHCARE-WEBSITE-production/index.html?token=${token}`;
+      }
+       else {
         toast.error(data.error);
       }
     } catch (error) {

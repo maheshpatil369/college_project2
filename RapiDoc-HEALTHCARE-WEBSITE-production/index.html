@@ -807,24 +807,44 @@
   <script src="js/patientportal_loginjs.js"></script>
   <script src="js/popupfeedback.js"></script>
   <script>
-    const user = JSON.parse(localStorage.getItem('user'));
-    const userDropdown = document.getElementById('userDropdown');
-    const usernameSpan = document.getElementById('username');
-    const logoutBtn = document.getElementById('logout-btn');
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const userParam = urlParams.get('token'); // Get "token" from URL
   
-    if (user && user.name) {
-      userDropdown.classList.remove('d-none');
-      usernameSpan.textContent = user.name;
-    } else {
-      // User is not logged in → hide whole section
-      document.getElementById('auth-section').style.display = 'none';
+      // Step 1: Parse and store in localStorage
+      if (userParam) {
+        const userObj = JSON.parse(decodeURIComponent(userParam));
+        localStorage.setItem('user', JSON.stringify(userObj));
+  
+        // Step 2: Clean the URL (remove query params)
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+  
+      // Step 3: Use user info from localStorage
+      const user = JSON.parse(localStorage.getItem('user'));
+      const userDropdown = document.getElementById('userDropdown');
+      const usernameSpan = document.getElementById('username');
+      const logoutBtn = document.getElementById('logout-btn');
+  
+  
+      if (user && user.name) {
+        userDropdown.classList.remove('d-none');
+        usernameSpan.textContent = user.name;
+      } else {
+        window.location.href = 'http://localhost:5173/'; // React login page
+      }
+  
+      // Step 4: Logout logic
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('user');
+        location.reload();
+      });
+  
+    } catch (err) {
+      console.error("Error handling user login:", err);
     }
-  
-    logoutBtn.addEventListener('click', () => {
-      localStorage.removeItem('user');
-      location.reload();
-    });
   </script>
+  
   
   
    
