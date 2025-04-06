@@ -90,27 +90,7 @@ const doctors = [
     experience: "Experience: 11 years",
     fee: "Fee: ₹350",
   },
-  {
-    id: 11,
-    name: "Dr. God",
-    specialization: "Specialization: Cardiologist",
-    experience: "Experience: 9 years",
-    fee: "Fee: ₹500",
-  },
-  {
-    id: 11,
-    name: "Dr. Gayatri",
-    specialization: "Specialization: Cardiologist",
-    experience: "Experience: 9 years",
-    fee: "Fee: ₹500",
-  },
-  {
-    id: 11,
-    name: "Dr. Raam",
-    specialization: "Specialization: Cardiologist",
-    experience: "Experience: 9 years",
-    fee: "Fee: ₹500",
-  },
+ 
   {
     id: 12,
     name: "Dr. Dhanshree",
