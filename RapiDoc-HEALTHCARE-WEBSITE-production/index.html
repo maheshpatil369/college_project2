@@ -107,32 +107,46 @@
           <!-- Shown ONLY when user is logged in -->
           <a
             id="userDropdown"
-            class="nav-link dropdown-toggle text-white d-none"
-            href="http://localhost:5173/"
-
+            class="nav-link dropdown-toggle d-none text-white d-flex items-center gap-2"
+            href="#"
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
+            style="background-color: transparent; border: none;"
           >
-            <i class="bi bi-person-circle"></i> <span id="username">User</span>
+            <i class="bi bi-person-circle fs-5 text-teal-200"></i>
+            <span id="username" class="fw-semibold text-teal-100">User</span>
           </a>
         
-          <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end bg-dark" aria-labelledby="userDropdown">
+          <ul
+            class="dropdown-menu dropdown-menu-end mt-2 shadow"
+            style="background-color: #0f766e; border: none;"
+            aria-labelledby="userDropdown"
+          >
             <li>
-              <button class="dropdown-item text-danger" id="logout-btn">
-                <i class="bi bi-box-arrow-left"></i> Logout
+              <button
+                class="dropdown-item d-flex align-items-center gap-2 text-white"
+                id="logout-btn"
+                style="background-color: transparent;"
+                onmouseover="this.style.backgroundColor='#134e4a'"
+                onmouseout="this.style.backgroundColor='transparent'"
+              >
+                <i class="bi bi-box-arrow-left fs-5 text-red-400"></i>
+                <span class="text-red-300">Logout</span>
               </button>
             </li>
           </ul>
         </li>
         
+        
+        
 
 
 
 
 
         </li>
-        <a href="http://localhost:5173/apo"><button class="btn1">Find a Doctor</button></a>
+        <a href="http://localhost:5173/apoFind"><button class="btn1">Find a Doctor</button></a>
         
     </nav>
   </header>

@@ -38,6 +38,21 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+const appointmentSchema = new mongoose.Schema({
+  fullName: { type: String, required: true },
+  dateOfBirth: { type: String, required: true },
+  email: { type: String, required: true },
+  phone: { type: String, required: true },
+  doctor: { type: String, required: true },
+  appointmentDate: { type: String, required: true },
+  appointmentTime: { type: String, required: true },
+  reason: { type: String, required: true },
+  isExistingPatient: { type: Boolean, required: true },
+}, { timestamps: true });
+
+const Appointment = mongoose.model('Appointment', appointmentSchema);
+
+
 // Register route (POST)
 app.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
@@ -72,6 +87,45 @@ app.post('/login', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+// POST: Create new appointment
+app.post('/appointments', async (req, res) => {
+  try {
+    const { doctor, appointmentDate, appointmentTime } = req.body;
+
+    // Check if the doctor is already booked at this date and time
+    const existingAppointment = await Appointment.findOne({
+      doctor,
+      appointmentDate,
+      appointmentTime,
+    });
+
+    if (existingAppointment) {
+      return res.status(400).json({ error: "This slot is already booked with the selected doctor." });
+    }
+
+    const newAppointment = new Appointment(req.body);
+    await newAppointment.save();
+
+    res.status(201).json({ message: "Appointment booked successfully", appointment: newAppointment });
+  } catch (err) {
+    console.error("Error creating appointment:", err);
+    res.status(500).json({ error: "Failed to book appointment" });
+  }
+});
+
+
+// GET: Fetch all appointments
+app.get('/appointments', async (req, res) => {
+  try {
+    const appointments = await Appointment.find();
+    res.status(200).json(appointments);
+  } catch (err) {
+    console.error("Error fetching appointments:", err);
+    res.status(500).json({ error: "Failed to fetch appointments" });
+  }
+});
+
 
 // Serve the static index.html file (Frontend)
 app.use(express.static(path.join(__dirname, 'public')));

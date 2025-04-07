@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { createRoot } from "react-dom/client"
 import {
   HomeIcon,
@@ -14,6 +14,7 @@ import {
   CalendarIcon,
   SearchIcon,
 } from "lucide-react"
+import { useLocation, useNavigate } from "react-router-dom"
 
 
 
@@ -268,303 +269,15 @@ function Footer() {
   )
 }
 
-// Home Page Component
-export function HomePage() {
 
-  return (
-    <div className="min-h-screen bg-gray-950">
-      <Header />
-      <main className="container mx-auto p-4">
-        <div className="flex flex-col items-center justify-center min-h-[80vh]">
-          <h1 className="text-4xl font-bold text-white mb-6">Welcome to RAPIDOC</h1>
-          <div className="flex space-x-4">
-            <a
-              href="/apoBook"
-              className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 rounded-md"
-            >
-              Book an Appointment
-            </a>
-            <a
-              href="/apoFind"
-              className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 rounded-md"
-            >
-              Find a Doctor
-            </a>
-          </div>
-        </div>
-      </main>
-      <Footer />
-    </div>
-  )
-}
 
-// Book Appointment Page Component
-export function BookAppointmentPage() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    dateOfBirth: "",
-    email: "",
-    phone: "",
-    doctor: "",
-    appointmentDate: "",
-    appointmentTime: "",
-    reason: "",
-    isExistingPatient: false,
-  })
 
-  const [showPreview, setShowPreview] = useState(false)
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target
-    setFormData({
-      ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    })
-  }
-
-  const handlePreview = (e) => {
-    e.preventDefault()
-    setShowPreview(true)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Submit logic would go here
-    alert("Appointment submitted successfully!")
-  }
-
-  return (
-    <div className="min-h-screen bg-gray-950">
-      <Header />
-      <main className="container mx-auto p-4 py-8">
-        <div className="max-w-2xl mx-auto bg-teal-900 rounded-lg p-8">
-          <h1 className="text-3xl font-bold text-white mb-2">Book an Appointment</h1>
-          <p className="text-teal-100 mb-6">Conveniently Connect with the Healthcare Experts!</p>
-
-          <form onSubmit={handlePreview} className="space-y-4">
-            <div>
-              <label htmlFor="fullName" className="block text-white mb-1">
-                Full Name
-              </label>
-              <input
-                type="text"
-                id="fullName"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                placeholder="Enter your name"
-                className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="dateOfBirth" className="block text-white mb-1">
-                Date of Birth:
-              </label>
-              <div className="relative">
-                <input
-                  type="date"
-                  id="dateOfBirth"
-                  name="dateOfBirth"
-                  value={formData.dateOfBirth}
-                  onChange={handleChange}
-                  className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                  required
-                />
-                <CalendarIcon className="absolute right-3 top-2.5 text-teal-400" size={20} />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block text-white mb-1">
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="example@example.com"
-                className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="phone" className="block text-white mb-1">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="Enter your phone number"
-                className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="doctor" className="block text-white mb-1">
-                Select a Doctor
-              </label>
-              <select
-                id="doctor"
-                name="doctor"
-                value={formData.doctor}
-                onChange={handleChange}
-                className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                required
-              >
-                <option value="">Select a Doctor</option>
-                <option value="Dr. Ram">Dr. Ram</option>
-                <option value="Dr. Rina">Dr. Rina</option>
-                <option value="Dr. Rina">Dr. God</option>
-                <option value="Dr. Rina">Dr. Gayatri</option>
-                <option value="Dr. Rina">Dr. Yash</option>
-                <option value="Dr. Rina">Dr. Priyanka</option>
-                <option value="Dr. Ganesh">Dr. Ganesh</option>
-                <option value="Dr. Arpa">Dr. Arpa</option>
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="appointmentDate" className="block text-white mb-1">
-                Appointment:
-              </label>
-              <div className="relative">
-                <input
-                  type="date"
-                  id="appointmentDate"
-                  name="appointmentDate"
-                  value={formData.appointmentDate}
-                  onChange={handleChange}
-                  className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                  required
-                />
-                <CalendarIcon className="absolute right-3 top-2.5 text-teal-400" size={20} />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="appointmentTime" className="block text-white mb-1">
-                Select a Time
-              </label>
-              <select
-                id="appointmentTime"
-                name="appointmentTime"
-                value={formData.appointmentTime}
-                onChange={handleChange}
-                className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                required
-              >
-                <option value="">Select Time</option>
-                <option value="10:00 AM">10:00 AM</option>
-                <option value="11:00 AM">11:00 AM</option>
-                <option value="12:00 PM">12:00 PM</option>
-                <option value="2:00 PM">2:00 PM</option>
-                <option value="3:00 PM">3:00 PM</option>
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="reason" className="block text-white mb-1">
-                Reason for Visit
-              </label>
-              <textarea
-                id="reason"
-                name="reason"
-                value={formData.reason}
-                onChange={handleChange}
-                placeholder="Enter your reason for visit..."
-                className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2 h-24 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                required
-              ></textarea>
-            </div>
-
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="isExistingPatient"
-                name="isExistingPatient"
-                checked={formData.isExistingPatient}
-                onChange={handleChange}
-                className="mr-2 h-4 w-4"
-              />
-              <label htmlFor="isExistingPatient" className="text-white">
-                Existing Patient?
-              </label>
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-200"
-            >
-              Preview Appointment
-            </button>
-          </form>
-
-          {showPreview && (
-            <div className="mt-8 bg-teal-800 rounded-lg p-6">
-              <h2 className="text-2xl font-bold text-white mb-4">Appointment Details</h2>
-              <div className="space-y-2 text-teal-100">
-                <p>
-                  <span className="font-semibold">Name:</span> {formData.fullName}
-                </p>
-                <p>
-                  <span className="font-semibold">DOB:</span> {formData.dateOfBirth}
-                </p>
-                <p>
-                  <span className="font-semibold">Email:</span> {formData.email}
-                </p>
-                <p>
-                  <span className="font-semibold">Phone:</span> {formData.phone}
-                </p>
-                <p>
-                  <span className="font-semibold">Doctor:</span> {formData.doctor}
-                </p>
-                <p>
-                  <span className="font-semibold">Date:</span> {formData.appointmentDate}
-                </p>
-                <p>
-                  <span className="font-semibold">Time:</span> {formData.appointmentTime}
-                </p>
-                <p>
-                  <span className="font-semibold">Reason:</span> {formData.reason}
-                </p>
-              </div>
-
-              <div className="mt-6 flex space-x-4">
-                <button
-                  onClick={handleSubmit}
-                  className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded transition duration-200"
-                >
-                  Submit
-                </button>
-                <button
-                  onClick={() => setShowPreview(false)}
-                  className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-6 rounded transition duration-200"
-                >
-                  Edit
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      </main>
-      <Footer />
-    </div>
-  )
-}
 
 // Find Doctor Page Component
 export function FindDoctorPage() {
-  const [experience, setExperience] = useState(0)
-  const [fee, setFee] = useState(1000)
+  const [experience, setExperience] = useState(0);
+  const [fee, setFee] = useState(1000);
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-gray-950">
@@ -576,44 +289,20 @@ export function FindDoctorPage() {
           <div className="flex flex-wrap items-center justify-between gap-4 bg-teal-950 p-4 rounded-lg">
             <div className="flex items-center gap-4">
               <div>
-                <label htmlFor="experience" className="block text-teal-300 mb-1">
-                  Experience:
-                </label>
-                <input
-                  type="range"
-                  id="experience"
-                  min="0"
-                  max="15"
-                  value={experience}
-                  onChange={(e) => setExperience(Number.parseInt(e.target.value))}
-                  className="w-32 accent-teal-500"
-                />
+                <label htmlFor="experience" className="block text-teal-300 mb-1">Experience:</label>
+                <input type="range" id="experience" min="0" max="15" value={experience} onChange={(e) => setExperience(parseInt(e.target.value))} className="w-32 accent-teal-500" />
                 <span className="ml-2 text-white">{experience}+ years</span>
               </div>
-
               <div>
-                <label htmlFor="fee" className="block text-teal-300 mb-1">
-                  Maximum Fee:
-                </label>
+                <label htmlFor="fee" className="block text-teal-300 mb-1">Maximum Fee:</label>
                 <div className="flex items-center">
-                  <input
-                    type="range"
-                    id="fee"
-                    min="300"
-                    max="1000"
-                    step="50"
-                    value={fee}
-                    onChange={(e) => setFee(Number.parseInt(e.target.value))}
-                    className="w-32 accent-teal-500"
-                  />
+                  <input type="range" id="fee" min="300" max="1000" step="50" value={fee} onChange={(e) => setFee(parseInt(e.target.value))} className="w-32 accent-teal-500" />
                   <span className="ml-2 text-white">₹{fee}</span>
                 </div>
               </div>
             </div>
-
             <button className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md flex items-center">
-              <SearchIcon size={18} className="mr-2" />
-              Filter
+              <SearchIcon size={18} className="mr-2" /> Filter
             </button>
           </div>
         </div>
@@ -621,14 +310,15 @@ export function FindDoctorPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {doctors
             .filter((doctor) => {
-              const doctorExp = Number.parseInt(doctor.experience.split(" ")[1])
-              const doctorFee = Number.parseInt(doctor.fee.split("₹")[1])
-              return doctorExp >= experience && doctorFee <= fee
+              const doctorExp = parseInt(doctor.experience.split(" ")[1]);
+              const doctorFee = parseInt(doctor.fee.split("₹")[1]);
+              return doctorExp >= experience && doctorFee <= fee;
             })
             .map((doctor, index) => (
               <div
                 key={doctor.id}
-                className={`${index % 4 === 1 || index % 4 === 2 ? "bg-teal-600" : "bg-teal-900"} rounded-lg p-4 flex justify-between items-center`}
+                onClick={() => navigate("/apoBook", { state: { doctorName: doctor.name } })}
+                className={`cursor-pointer ${index % 4 === 1 || index % 4 === 2 ? "bg-teal-600" : "bg-teal-900"} rounded-lg p-4 flex justify-between items-center`}
               >
                 <div>
                   <h2 className="text-xl font-bold text-white">{doctor.name}</h2>
@@ -637,7 +327,6 @@ export function FindDoctorPage() {
                   <p className="text-teal-100">{doctor.fee}</p>
                 </div>
                 <div className="h-16 w-16 rounded-full bg-teal-700 flex items-center justify-center">
-                  {/* Placeholder for doctor image */}
                   <div className="text-white text-xl font-bold">{doctor.name.split(" ")[1][0]}</div>
                 </div>
               </div>
@@ -646,7 +335,246 @@ export function FindDoctorPage() {
       </main>
       <Footer />
     </div>
-  )
+  );
+}
+
+
+// Book Appointment Page Component
+export function BookAppointmentPage() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const doctorFromFindPage = location.state?.doctorName || "";
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    dateOfBirth: "",
+    email: "",
+    phone: "",
+    doctor: doctorFromFindPage,
+    appointmentDate: "",
+    appointmentTime: "",
+    reason: "",
+    isExistingPatient: false,
+  });
+
+  const [showPreview, setShowPreview] = useState(false);
+
+  const fixedTimeSlots = [
+    "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
+    "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM",
+  ];
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
+  };
+
+  const handlePreview = (e) => {
+    e.preventDefault();
+    setShowPreview(true);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("http://localhost:5000/appointments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        alert("Appointment submitted successfully!");
+        setFormData({
+          fullName: "",
+          dateOfBirth: "",
+          email: "",
+          phone: "",
+          doctor: "",
+          appointmentDate: "",
+          appointmentTime: "",
+          reason: "",
+          isExistingPatient: false,
+        });
+        setShowPreview(false);
+      } else alert("Error: " + data.error);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong. Try again later.");
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-950">
+      <Header />
+      <main className="container mx-auto p-4 py-8">
+        <div className="max-w-2xl mx-auto bg-teal-900 rounded-lg p-8">
+          <div className="flex justify-between items-center mb-4">
+            <h1 className="text-3xl font-bold text-white">Book an Appointment</h1>
+            <button
+              onClick={() => navigate("/apoHistory")}
+              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+            >
+              View History
+            </button>
+          </div>
+          <p className="text-teal-100 mb-6">
+            Conveniently Connect with the Healthcare Experts!
+          </p>
+
+          <form onSubmit={handlePreview} className="space-y-4">
+            <div>
+              <label htmlFor="doctor" className="block text-white mb-1">Select a Doctor</label>
+              <input
+                type="text"
+                id="doctor"
+                name="doctor"
+                value={formData.doctor}
+                readOnly
+                className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="fullName" className="block text-white mb-1">Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
+                required
+                className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="dateOfBirth" className="block text-white mb-1">Date of Birth</label>
+              <input
+                type="date"
+                id="dateOfBirth"
+                name="dateOfBirth"
+                value={formData.dateOfBirth}
+                onChange={handleChange}
+                required
+                className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-white mb-1">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="phone" className="block text-white mb-1">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+                className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="appointmentDate" className="block text-white mb-1">Appointment Date</label>
+              <input
+                type="date"
+                id="appointmentDate"
+                name="appointmentDate"
+                value={formData.appointmentDate}
+                onChange={handleChange}
+                required
+                className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="appointmentTime" className="block text-white mb-1">Appointment Time</label>
+              <select
+                id="appointmentTime"
+                name="appointmentTime"
+                value={formData.appointmentTime}
+                onChange={handleChange}
+                required
+                className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2"
+              >
+                <option value="">Select a time</option>
+                {fixedTimeSlots.map((time) => (
+                  <option key={time} value={time}>{time}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="reason" className="block text-white mb-1">Reason</label>
+              <textarea
+                id="reason"
+                name="reason"
+                value={formData.reason}
+                onChange={handleChange}
+                required
+                className="w-full bg-teal-800 text-white border border-teal-700 rounded p-2"
+              ></textarea>
+            </div>
+
+            <div className="mt-4">
+              <button
+                type="submit"
+                className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded"
+              >
+                Preview
+              </button>
+            </div>
+          </form>
+
+          {showPreview && (
+            <div className="mt-8 bg-teal-800 rounded-lg p-6">
+              <h2 className="text-2xl font-bold text-white mb-4">Appointment Details</h2>
+              <div className="space-y-2 text-teal-100">
+                <p><strong>Name:</strong> {formData.fullName}</p>
+                <p><strong>Doctor:</strong> {formData.doctor}</p>
+                <p><strong>DOB:</strong> {formData.dateOfBirth}</p>
+                <p><strong>Email:</strong> {formData.email}</p>
+                <p><strong>Phone:</strong> {formData.phone}</p>
+                <p><strong>Date:</strong> {formData.appointmentDate}</p>
+                <p><strong>Time:</strong> {formData.appointmentTime}</p>
+                <p><strong>Reason:</strong> {formData.reason}</p>
+                <p><strong>Existing Patient:</strong> {formData.isExistingPatient ? "Yes" : "No"}</p>
+              </div>
+              <div className="mt-4 flex space-x-4">
+                <button
+                  onClick={handleSubmit}
+                  className="bg-green-500 text-white py-2 px-4 rounded"
+                >
+                  Submit
+                </button>
+                <button
+                  onClick={() => setShowPreview(false)}
+                  className="bg-red-500 text-white py-2 px-4 rounded"
+                >
+                  Edit
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
 }
 
 // Not Found Page Component
@@ -666,6 +594,72 @@ export function NotFoundPage() {
     </div>
   )
 }
+
+
+export const History = () => {
+  const [appointments, setAppointments] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchAppointments = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/appointments")
+        const data = await res.json()
+        setAppointments(data)
+      } catch (error) {
+        console.error("Failed to fetch appointment history:", error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchAppointments()
+  }, [])
+
+  return (
+    <div className="min-h-screen bg-gray-950 text-white p-6">
+      <h1 className="text-3xl font-bold mb-4">Appointment History</h1>
+      {loading ? (
+        <p>Loading...</p>
+      ) : appointments.length === 0 ? (
+        <p>No appointments found.</p>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="w-full border border-gray-700 rounded-lg">
+            <thead className="bg-teal-800 text-white">
+              <tr>
+                <th className="py-2 px-4">Name</th>
+                <th className="py-2 px-4">Email</th>
+                <th className="py-2 px-4">Phone</th>
+                <th className="py-2 px-4">Doctor</th>
+                <th className="py-2 px-4">Date</th>
+                <th className="py-2 px-4">Time</th>
+                <th className="py-2 px-4">Reason</th>
+                <th className="py-2 px-4">Patient</th>
+              </tr>
+            </thead>
+            <tbody className="bg-teal-900 text-teal-100">
+              {appointments.map((appt, index) => (
+                <tr key={index} className="border-t border-teal-700">
+                  <td className="py-2 px-4">{appt.fullName}</td>
+                  <td className="py-2 px-4">{appt.email}</td>
+                  <td className="py-2 px-4">{appt.phone}</td>
+                  <td className="py-2 px-4">{appt.doctor}</td>
+                  <td className="py-2 px-4">{appt.appointmentDate}</td>
+                  <td className="py-2 px-4">{appt.appointmentTime}</td>
+                  <td className="py-2 px-4">{appt.reason}</td>
+                  <td className="py-2 px-4">{appt.isExistingPatient ? "Yes" : "No"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  )
+}
+
+
 
 
 {/* <HomePage /> */}
