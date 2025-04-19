@@ -543,7 +543,7 @@ export function BookAppointmentPage() {
     appointmentDate: "",
     appointmentTime: "",
     reason: "",
-    isExistingPatient: false,
+    is: false,
   });
 
   const [showPreview, setShowPreview] = useState(false);
