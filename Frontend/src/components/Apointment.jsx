@@ -130,53 +130,242 @@ const doctors = [
 ]
 
 // Header Component
+// function Header() {
+
+//   return (
+//     <header className="bg-teal-950 text-white p-3 flex items-center space-x-4 overflow-x-auto">
+//       <a href="/" className="flex items-center space-x-1 whitespace-nowrap">
+//         <HomeIcon size={16} />
+//         <span>Home</span>
+//       </a>
+//       <a href="/about" className="flex items-center space-x-1 whitespace-nowrap">
+//         <InfoIcon size={16} />
+//         <span>About</span>
+//       </a>
+//       <a href="/news" className="flex items-center space-x-1 whitespace-nowrap">
+//         <NewspaperIcon size={16} />
+//         <span>News</span>
+//       </a>
+//       <a href="/service" className="flex items-center space-x-1 whitespace-nowrap">
+//         <WrenchIcon size={16} />
+//         <span>Service</span>
+//       </a>
+//       <a href="/patient-portal" className="flex items-center space-x-1 whitespace-nowrap">
+//         <UserIcon size={16} />
+//         <span>Patient Portal</span>
+//       </a>
+//       <a href="/book-appointment" className="flex items-center space-x-1 whitespace-nowrap">
+//         <CalendarIcon size={16} />
+//         <span>Appointment</span>
+//       </a>
+//       <a href="/find-doctor" className="flex items-center space-x-1 whitespace-nowrap">
+//         <StethoscopeIcon size={16} />
+//         <span>Find Doctor</span>
+//       </a>
+//       <a href="/contact-us" className="flex items-center space-x-1 whitespace-nowrap">
+//         <PhoneIcon size={16} />
+//         <span>Contact us</span>
+//       </a>
+//       <a href="/rate-us" className="flex items-center space-x-1 whitespace-nowrap">
+//         <StarIcon size={16} />
+//         <span>Rate Us</span>
+//       </a>
+//     </header>
+//   )
+// }
+
+// function Header() {
+//   const handleNoAction = (e) => {
+//     e.preventDefault(); // Prevent any action when the element is clicked
+//   };
+
+//   return (
+//     <header className="bg-teal-950 text-white p-3 flex items-center space-x-4 overflow-x-auto">
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-3 py-2 rounded-md hover:bg-teal-800 transition">
+//         <HomeIcon size={16} />
+//         <span>Home</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-3 py-2 rounded-md hover:bg-teal-800 transition">
+//         <InfoIcon size={16} />
+//         <span>About</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-3 py-2 rounded-md hover:bg-teal-800 transition">
+//         <NewspaperIcon size={16} />
+//         <span>News</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-3 py-2 rounded-md hover:bg-teal-800 transition">
+//         <WrenchIcon size={16} />
+//         <span>Service</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-3 py-2 rounded-md hover:bg-teal-800 transition">
+//         <UserIcon size={16} />
+//         <span>Patient Portal</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-3 py-2 rounded-md hover:bg-teal-800 transition">
+//         <CalendarIcon size={16} />
+//         <span>Appointment</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-3 py-2 rounded-md hover:bg-teal-800 transition">
+//         <StethoscopeIcon size={16} />
+//         <span>Find Doctor</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-3 py-2 rounded-md hover:bg-teal-800 transition">
+//         <PhoneIcon size={16} />
+//         <span>Contact us</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-3 py-2 rounded-md hover:bg-teal-800 transition">
+//         <StarIcon size={16} />
+//         <span>Rate Us</span>
+//       </button>
+//     </header>
+//   );
+// }
+
+
 function Header() {
+  const handleNoAction = (e) => {
+    e.preventDefault();
+  };
 
   return (
-    <header className="bg-teal-950 text-white p-3 flex items-center space-x-4 overflow-x-auto">
-      <a href="/" className="flex items-center space-x-1 whitespace-nowrap">
-        <HomeIcon size={16} />
+    <header className="bg-teal-950 text-white p-2 flex items-center space-x-2 overflow-x-auto text-sm">
+      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+        <HomeIcon size={14} />
         <span>Home</span>
-      </a>
-      <a href="/about" className="flex items-center space-x-1 whitespace-nowrap">
-        <InfoIcon size={16} />
+      </button>
+      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+        <InfoIcon size={14} />
         <span>About</span>
-      </a>
-      <a href="/news" className="flex items-center space-x-1 whitespace-nowrap">
-        <NewspaperIcon size={16} />
+      </button>
+      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+        <NewspaperIcon size={14} />
         <span>News</span>
-      </a>
-      <a href="/service" className="flex items-center space-x-1 whitespace-nowrap">
-        <WrenchIcon size={16} />
+      </button>
+      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+        <WrenchIcon size={14} />
         <span>Service</span>
-      </a>
-      <a href="/patient-portal" className="flex items-center space-x-1 whitespace-nowrap">
-        <UserIcon size={16} />
+      </button>
+      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+        <UserIcon size={14} />
         <span>Patient Portal</span>
-      </a>
-      <a href="/book-appointment" className="flex items-center space-x-1 whitespace-nowrap">
-        <CalendarIcon size={16} />
+      </button>
+      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+        <CalendarIcon size={14} />
         <span>Appointment</span>
-      </a>
-      <a href="/find-doctor" className="flex items-center space-x-1 whitespace-nowrap">
-        <StethoscopeIcon size={16} />
+      </button>
+      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+        <StethoscopeIcon size={14} />
         <span>Find Doctor</span>
-      </a>
-      <a href="/contact-us" className="flex items-center space-x-1 whitespace-nowrap">
-        <PhoneIcon size={16} />
+      </button>
+      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+        <PhoneIcon size={14} />
         <span>Contact us</span>
-      </a>
-      <a href="/rate-us" className="flex items-center space-x-1 whitespace-nowrap">
-        <StarIcon size={16} />
+      </button>
+      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+        <StarIcon size={14} />
         <span>Rate Us</span>
-      </a>
+      </button>
     </header>
-  )
+  );
 }
 
-// Footer Component
-function Footer() {
 
+// Footer Component
+// function Footer() {
+
+//   return (
+//     <footer className="bg-teal-950 text-white py-8">
+//       <div className="container mx-auto px-4">
+//         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+//           <div>
+//             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+//             <ul className="space-y-2 text-teal-300">
+//               <li>
+//                 <a href="/">Home</a>
+//               </li>
+//               <li>
+//                 <a href="/about-us">About Us</a>
+//               </li>
+//               <li>
+//                 <a href="/contact-us">Contact Us</a>
+//               </li>
+//               <li>
+//                 <a href="/services">Services</a>
+//               </li>
+//               <li>
+//                 <a href="/doctors">Doctors</a>
+//               </li>
+//               <li>
+//                 <a href="/faq">FAQ</a>
+//               </li>
+//             </ul>
+//           </div>
+
+//           <div>
+//             <h3 className="text-lg font-semibold mb-4">Explore</h3>
+//             <ul className="space-y-2 text-teal-300">
+//               <li>
+//                 <a href="/book-appointment">Appointment</a>
+//               </li>
+//               <li>
+//                 <a href="/patient-portal">Patient Portal</a>
+//               </li>
+//               <li>
+//                 <a href="/login">Login account</a>
+//               </li>
+//               <li>
+//                 <a href="/helplines">Helplines</a>
+//               </li>
+//               <li>
+//                 <a href="/location">Location</a>
+//               </li>
+//             </ul>
+//           </div>
+
+//           <div>
+//             <h3 className="text-lg font-semibold mb-4">Legal</h3>
+//             <ul className="space-y-2 text-teal-300">
+//               <li>
+//                 <a href="/customer-agreement">Customer Agreement</a>
+//               </li>
+//               <li>
+//                 <a href="/privacy-policy">Privacy Policy</a>
+//               </li>
+//               <li>
+//                 <a href="/terms">Terms and Conditions</a>
+//               </li>
+//               <li>
+//                 <a href="/gdpr">GDPR</a>
+//               </li>
+//             </ul>
+//           </div>
+
+//           <div>
+//             <h3 className="text-lg font-semibold mb-4">RAPIDOC Newsletter</h3>
+//             <p className="text-sm mb-4">
+//               Subscribe to our newsletter for a weekly dose of news, updates, helpful tips, and exclusive offers.
+//             </p>
+//             <div className="flex">
+//               <input
+//                 type="email"
+//                 placeholder="Your email"
+//                 className="bg-teal-800 text-white px-3 py-2 rounded-l-md focus:outline-none"
+//               />
+//               <button className="bg-white text-teal-900 px-3 py-2 rounded-r-md font-semibold">SUBSCRIBE</button>
+//             </div>
+//           </div>
+//         </div>
+
+//         <div className="mt-8 pt-4 border-t border-teal-800 text-center text-sm">
+//           <p></p>
+//           <div className="flex justify-center space-x-4 mt-2">{/* Social media icons would go here */}</div>
+//         </div>
+//       </div>
+//     </footer>
+//   )
+// }
+
+function Footer() {
   return (
     <footer className="bg-teal-950 text-white py-8">
       <div className="container mx-auto px-4">
@@ -184,90 +373,90 @@ function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-teal-300">
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="/about-us">About Us</a>
-              </li>
-              <li>
-                <a href="/contact-us">Contact Us</a>
-              </li>
-              <li>
-                <a href="/services">Services</a>
-              </li>
-              <li>
-                <a href="/doctors">Doctors</a>
-              </li>
-              <li>
-                <a href="/faq">FAQ</a>
-              </li>
+              <li><a href="/" onClick={(e) => e.preventDefault()}>Home</a></li>
+              <li><a href="/about-us" onClick={(e) => e.preventDefault()}>About Us</a></li>
+              <li><a href="/contact-us" onClick={(e) => e.preventDefault()}>Contact Us</a></li>
+              <li><a href="/services" onClick={(e) => e.preventDefault()}>Services</a></li>
+              <li><a href="/doctors" onClick={(e) => e.preventDefault()}>Doctors</a></li>
+              <li><a href="/faq" onClick={(e) => e.preventDefault()}>FAQ</a></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Explore</h3>
             <ul className="space-y-2 text-teal-300">
-              <li>
-                <a href="/book-appointment">Appointment</a>
-              </li>
-              <li>
-                <a href="/patient-portal">Patient Portal</a>
-              </li>
-              <li>
-                <a href="/login">Login account</a>
-              </li>
-              <li>
-                <a href="/helplines">Helplines</a>
-              </li>
-              <li>
-                <a href="/location">Location</a>
-              </li>
+              <li><a href="/book-appointment" onClick={(e) => e.preventDefault()}>Appointment</a></li>
+              <li><a href="/patient-portal" onClick={(e) => e.preventDefault()}>Patient Portal</a></li>
+              <li><a href="/login" onClick={(e) => e.preventDefault()}>Login account</a></li>
+              <li><a href="/helplines" onClick={(e) => e.preventDefault()}>Helplines</a></li>
+              <li><a href="/location" onClick={(e) => e.preventDefault()}>Location</a></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Legal</h3>
             <ul className="space-y-2 text-teal-300">
-              <li>
-                <a href="/customer-agreement">Customer Agreement</a>
-              </li>
-              <li>
-                <a href="/privacy-policy">Privacy Policy</a>
-              </li>
-              <li>
-                <a href="/terms">Terms and Conditions</a>
-              </li>
-              <li>
-                <a href="/gdpr">GDPR</a>
-              </li>
+              <li><a href="/customer-agreement" onClick={(e) => e.preventDefault()}>Customer Agreement</a></li>
+              <li><a href="/privacy-policy" onClick={(e) => e.preventDefault()}>Privacy Policy</a></li>
+              <li><a href="/terms" onClick={(e) => e.preventDefault()}>Terms and Conditions</a></li>
+              <li><a href="/gdpr" onClick={(e) => e.preventDefault()}>GDPR</a></li>
             </ul>
           </div>
 
-          <div>
+        {/*  <div>
             <h3 className="text-lg font-semibold mb-4">RAPIDOC Newsletter</h3>
             <p className="text-sm mb-4">
               Subscribe to our newsletter for a weekly dose of news, updates, helpful tips, and exclusive offers.
             </p>
-            <div className="flex">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0">
               <input
                 type="email"
                 placeholder="Your email"
-                className="bg-teal-800 text-white px-3 py-2 rounded-l-md focus:outline-none"
+                className="bg-teal-800 text-white px-3 py-2 rounded-l-md focus:outline-none w-full sm:w-auto"
+                disabled
               />
-              <button className="bg-white text-teal-900 px-3 py-2 rounded-r-md font-semibold">SUBSCRIBE</button>
+              <button
+                onClick={(e) => e.preventDefault()}
+                className="bg-white text-teal-900 px-3 py-2 rounded-r-md font-semibold"
+              >
+                SUBSCRIBE
+              </button>
             </div>
-          </div>
+          </div> */}
+         <div>
+  <h3 className="text-2xl font-semibold mb-4">RAPIDOC Newsletter</h3>
+  <p className="text-sm mb-4 max-w-xs mx-auto">
+    Subscribe to our newsletter for a weekly dose of news, updates, helpful tips, and exclusive offers.
+  </p>
+  <div className="flex">
+    <input
+      type="email"
+      placeholder="Your email"
+      className="bg-teal-800 text-white px-3 py-2 rounded-l-md focus:outline-none text-base w-full sm:w-auto"
+    />
+    <button className="bg-white text-teal-900 px-3 py-2 rounded-r-md font-semibold text-lg">
+      SUBSCRIBE
+    </button>
+  </div>
+</div>
+
+
         </div>
 
         <div className="mt-8 pt-4 border-t border-teal-800 text-center text-sm">
-          <p></p>
-          <div className="flex justify-center space-x-4 mt-2">{/* Social media icons would go here */}</div>
+          <p>© 2025 RAPIDOC. All rights reserved.</p>
+          <div className="flex justify-center space-x-4 mt-2">
+            {/* Social media icons could go here */}
+          </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
+
+
+
+
 
 
 
