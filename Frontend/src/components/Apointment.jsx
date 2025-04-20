@@ -463,10 +463,186 @@ function Footer() {
 
 
 // Find Doctor Page Component
+// export function FindDoctorPage() {
+//   const [experience, setExperience] = useState(0);
+//   const [fee, setFee] = useState(1000);
+//   const navigate = useNavigate();
+
+//   return (
+//     <div className="min-h-screen bg-gray-950">
+//       <Header />
+//       <main className="container mx-auto p-4 py-8">
+//         <div className="mb-8">
+//           <h1 className="text-3xl font-bold text-white mb-6">Find a Doctor</h1>
+
+//           <div className="flex flex-wrap items-center justify-between gap-4 bg-teal-950 p-4 rounded-lg">
+//             <div className="flex items-center gap-4">
+//               <div>
+//                 <label htmlFor="experience" className="block text-teal-300 mb-1">Experience:</label>
+//                 <input type="range" id="experience" min="0" max="15" value={experience} onChange={(e) => setExperience(parseInt(e.target.value))} className="w-32 accent-teal-500" />
+//                 <span className="ml-2 text-white">{experience}+ years</span>
+//               </div>
+//               <div>
+//                 <label htmlFor="fee" className="block text-teal-300 mb-1">Maximum Fee:</label>
+//                 <div className="flex items-center">
+//                   <input type="range" id="fee" min="300" max="1000" step="50" value={fee} onChange={(e) => setFee(parseInt(e.target.value))} className="w-32 accent-teal-500" />
+//                   <span className="ml-2 text-white">₹{fee}</span>
+//                 </div>
+//               </div>
+//             </div>
+//             <button className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md flex items-center">
+//               <SearchIcon size={18} className="mr-2" /> Filter
+//             </button>
+//           </div>
+//         </div>
+
+//         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+//           {doctors
+//             .filter((doctor) => {
+//               const doctorExp = parseInt(doctor.experience.split(" ")[1]);
+//               const doctorFee = parseInt(doctor.fee.split("₹")[1]);
+//               return doctorExp >= experience && doctorFee <= fee;
+//             })
+//             .map((doctor, index) => (
+//               <div
+//                 key={doctor.id}
+//                 onClick={() => navigate("/apoBook", { state: { doctorName: doctor.name } })}
+//                 className={`cursor-pointer ${index % 4 === 1 || index % 4 === 2 ? "bg-teal-600" : "bg-teal-900"} rounded-lg p-4 flex justify-between items-center`}
+//               >
+//                 <div>
+//                   <h2 className="text-xl font-bold text-white">{doctor.name}</h2>
+//                   <p className="text-teal-100">{doctor.specialization}</p>
+//                   <p className="text-teal-100">{doctor.experience}</p>
+//                   <p className="text-teal-100">{doctor.fee}</p>
+//                 </div>
+//                 <div className="h-16 w-16 rounded-full bg-teal-700 flex items-center justify-center">
+//                   <div className="text-white text-xl font-bold">{doctor.name.split(" ")[1][0]}</div>
+//                 </div>
+//               </div>
+//             ))}
+//         </div>
+//       </main>
+//       <Footer />
+//     </div>
+//   );
+// }
+
+
+// export function FindDoctorPage() {
+//   const [experience, setExperience] = useState(0);
+//   const [fee, setFee] = useState(1000);
+//   const [specialization, setSpecialization] = useState("");
+//   const navigate = useNavigate();
+
+//   return (
+//     <div className="min-h-screen bg-gray-950">
+//       <Header />
+//       <main className="container mx-auto p-4 py-8">
+//         <div className="mb-8">
+//           <h1 className="text-3xl font-bold text-white mb-6">Find a Doctor</h1>
+
+//           <div className="flex flex-wrap items-center justify-between gap-4 bg-teal-950 p-4 rounded-lg">
+//             <div className="flex items-center gap-4 flex-wrap">
+//               <div>
+//                 <label htmlFor="experience" className="block text-teal-300 mb-1">Experience:</label>
+//                 <input
+//                   type="range"
+//                   id="experience"
+//                   min="0"
+//                   max="15"
+//                   value={experience}
+//                   onChange={(e) => setExperience(parseInt(e.target.value))}
+//                   className="w-32 accent-teal-500"
+//                 />
+//                 <span className="ml-2 text-white">{experience}+ years</span>
+//               </div>
+//               <div>
+//                 <label htmlFor="fee" className="block text-teal-300 mb-1">Maximum Fee:</label>
+//                 <div className="flex items-center">
+//                   <input
+//                     type="range"
+//                     id="fee"
+//                     min="300"
+//                     max="1000"
+//                     step="50"
+//                     value={fee}
+//                     onChange={(e) => setFee(parseInt(e.target.value))}
+//                     className="w-32 accent-teal-500"
+//                   />
+//                   <span className="ml-2 text-white">₹{fee}</span>
+//                 </div>
+//               </div>
+//               <div>
+//                 <label htmlFor="specialization" className="block text-teal-300 mb-1">Specialization:</label>
+//                 <select
+//                   id="specialization"
+//                   value={specialization}
+//                   onChange={(e) => setSpecialization(e.target.value)}
+//                   className="bg-white text-black px-2 py-1 rounded-md"
+//                 >
+//                   <option value="">All</option>
+//                   <option value="Cardiologist">Cardiologist</option>
+//                   <option value="Dermatologist">Dermatologist</option>
+//                   <option value="ENT">ENT</option>
+//                   <option value="Gynaecologist">Gynaecologist</option>
+//                   <option value="Pediatrics">Pediatrics</option>
+//                   <option value="Endocrinologist">Endocrinologist</option>
+//                   <option value="Neurologist">Neurologist</option>
+//                 </select>
+//               </div>
+//             </div>
+//             <button className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md flex items-center">
+//               <SearchIcon size={18} className="mr-2" /> Filter
+//             </button>
+//           </div>
+//         </div>
+
+//         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+//           {doctors
+//             .filter((doctor) => {
+//               const doctorExp = parseInt(doctor.experience.split(" ")[1]);
+//               const doctorFee = parseInt(doctor.fee.split("₹")[1]);
+//               const specializationMatch =
+//                 specialization === "" || doctor.specialization === specialization;
+
+//               return doctorExp >= experience && doctorFee <= fee && specializationMatch;
+//             })
+//             .map((doctor, index) => (
+//               <div
+//                 key={doctor.id}
+//                 onClick={() => navigate("/apoBook", { state: { doctorName: doctor.name } })}
+//                 className={`cursor-pointer ${
+//                   index % 4 === 1 || index % 4 === 2 ? "bg-teal-600" : "bg-teal-900"
+//                 } rounded-lg p-4 flex justify-between items-center`}
+//               >
+//                 <div>
+//                   <h2 className="text-xl font-bold text-white">{doctor.name}</h2>
+//                   <p className="text-teal-100">{doctor.specialization}</p>
+//                   <p className="text-teal-100">{doctor.experience}</p>
+//                   <p className="text-teal-100">{doctor.fee}</p>
+//                 </div>
+//                 <div className="h-16 w-16 rounded-full bg-teal-700 flex items-center justify-center">
+//                   <div className="text-white text-xl font-bold">
+//                     {doctor.name.split(" ")[1][0]}
+//                   </div>
+//                 </div>
+//               </div>
+//             ))}
+//         </div>
+//       </main>
+//       <Footer />
+//     </div>
+//   );
+// }
+
+
 export function FindDoctorPage() {
   const [experience, setExperience] = useState(0);
   const [fee, setFee] = useState(1000);
+  const [specialization, setSpecialization] = useState("");
   const navigate = useNavigate();
+
+  const specializations = Array.from(new Set(doctors.map((d) => d.specialization)));
 
   return (
     <div className="min-h-screen bg-gray-950">
@@ -475,39 +651,100 @@ export function FindDoctorPage() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-white mb-6">Find a Doctor</h1>
 
+          {/* Filter Section */}
           <div className="flex flex-wrap items-center justify-between gap-4 bg-teal-950 p-4 rounded-lg">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-8">
+              {/* Experience Filter */}
               <div>
-                <label htmlFor="experience" className="block text-teal-300 mb-1">Experience:</label>
-                <input type="range" id="experience" min="0" max="15" value={experience} onChange={(e) => setExperience(parseInt(e.target.value))} className="w-32 accent-teal-500" />
-                <span className="ml-2 text-white">{experience}+ years</span>
-              </div>
-              <div>
-                <label htmlFor="fee" className="block text-teal-300 mb-1">Maximum Fee:</label>
-                <div className="flex items-center">
-                  <input type="range" id="fee" min="300" max="1000" step="50" value={fee} onChange={(e) => setFee(parseInt(e.target.value))} className="w-32 accent-teal-500" />
-                  <span className="ml-2 text-white">₹{fee}</span>
+                <label htmlFor="experience" className="block text-teal-300 text-sm font-medium mb-1">
+                  Experience:
+                </label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="range"
+                    id="experience"
+                    min="0"
+                    max="15"
+                    value={experience}
+                    onChange={(e) => setExperience(parseInt(e.target.value))}
+                    className="w-32 accent-teal-500"
+                  />
+                  <span className="text-white">{experience}+ yrs</span>
                 </div>
               </div>
+
+              {/* Fee Filter */}
+              <div>
+                <label htmlFor="fee" className="block text-teal-300 text-sm font-medium mb-1">
+                  Maximum Fee:
+                </label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="range"
+                    id="fee"
+                    min="300"
+                    max="1000"
+                    step="50"
+                    value={fee}
+                    onChange={(e) => setFee(parseInt(e.target.value))}
+                    className="w-32 accent-teal-500"
+                  />
+                  <span className="text-white">₹{fee}</span>
+                </div>
+              </div>
+
+              {/* Specialization Filter */}
+              <div>
+                <label htmlFor="specialization" className="block text-teal-300 text-sm font-medium mb-1">
+                  Specialization:
+                </label>
+                <select
+                  id="specialization"
+                  value={specialization}
+                  onChange={(e) => setSpecialization(e.target.value)}
+                  className="bg-teal-800 text-white px-3 py-2 rounded-md"
+                >
+                  <option value="">All</option>
+                  {specializations.map((spec) => (
+                    <option key={spec} value={spec}>
+                      {spec}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
-            <button className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md flex items-center">
-              <SearchIcon size={18} className="mr-2" /> Filter
+
+            {/* Filter Reset Button */}
+            <button
+              onClick={() => {
+                setExperience(0);
+                setFee(1000);
+                setSpecialization("");
+              }}
+              className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md flex items-center"
+            >
+              <SearchIcon size={18} className="mr-2" />
+              Reset Filters
             </button>
           </div>
         </div>
 
+        {/* Filtered Doctors */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {doctors
             .filter((doctor) => {
               const doctorExp = parseInt(doctor.experience.split(" ")[1]);
               const doctorFee = parseInt(doctor.fee.split("₹")[1]);
-              return doctorExp >= experience && doctorFee <= fee;
+              const specMatch = specialization === "" || doctor.specialization === specialization;
+              return doctorExp >= experience && doctorFee <= fee && specMatch;
             })
             .map((doctor, index) => (
               <div
                 key={doctor.id}
                 onClick={() => navigate("/apoBook", { state: { doctorName: doctor.name } })}
-                className={`cursor-pointer ${index % 4 === 1 || index % 4 === 2 ? "bg-teal-600" : "bg-teal-900"} rounded-lg p-4 flex justify-between items-center`}
+                className={`cursor-pointer ${
+                  index % 4 === 1 || index % 4 === 2 ? "bg-teal-600" : "bg-teal-900"
+                } rounded-lg p-4 flex justify-between items-center`}
               >
                 <div>
                   <h2 className="text-xl font-bold text-white">{doctor.name}</h2>
@@ -516,7 +753,9 @@ export function FindDoctorPage() {
                   <p className="text-teal-100">{doctor.fee}</p>
                 </div>
                 <div className="h-16 w-16 rounded-full bg-teal-700 flex items-center justify-center">
-                  <div className="text-white text-xl font-bold">{doctor.name.split(" ")[1][0]}</div>
+                  <div className="text-white text-xl font-bold">
+                    {doctor.name.split(" ")[1][0]}
+                  </div>
                 </div>
               </div>
             ))}
@@ -526,6 +765,7 @@ export function FindDoctorPage() {
     </div>
   );
 }
+
 
 
 // Book Appointment Page Component
