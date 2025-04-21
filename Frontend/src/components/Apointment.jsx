@@ -1,3 +1,21 @@
+// "use client"
+
+// import React, { useEffect, useState } from "react"
+// import { createRoot } from "react-dom/client"
+// import {
+//   HomeIcon,
+//   InfoIcon,
+//   NewspaperIcon,
+//   WrenchIcon,
+//   UserIcon,
+//   StethoscopeIcon,
+//   PhoneIcon,
+//   StarIcon,
+//   CalendarIcon,
+//   SearchIcon,
+// } from "lucide-react"
+// import { useLocation, useNavigate } from "react-router-dom"
+
 "use client"
 
 import React, { useEffect, useState } from "react"
@@ -13,8 +31,11 @@ import {
   StarIcon,
   CalendarIcon,
   SearchIcon,
+  ArrowLeftIcon, // ✅ ADD: Back Icon
 } from "lucide-react"
-import { useLocation, useNavigate } from "react-router-dom"
+
+import { useLocation, useNavigate, Link } from "react-router-dom" // ✅ ADD: Link & useNavigate
+
 
 
 
@@ -172,7 +193,7 @@ const doctors = [
 //       </a>
 //     </header>
 //   )
-// }
+// } wrong
 
 // function Header() {
 //   const handleNoAction = (e) => {
@@ -219,55 +240,143 @@ const doctors = [
 //       </button>
 //     </header>
 //   );
+// } wrong
+
+
+// function Header() {
+//   const handleNoAction = (e) => {
+//     e.preventDefault();
+//   };
+
+//   return (
+//     <header className="bg-teal-950 text-white p-2 flex items-center space-x-2 overflow-x-auto text-sm">
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+//         <HomeIcon size={14} />
+//         <span>Home</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+//         <InfoIcon size={14} />
+//         <span>About</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+//         <NewspaperIcon size={14} />
+//         <span>News</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+//         <WrenchIcon size={14} />
+//         <span>Service</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+//         <UserIcon size={14} />
+//         <span>Patient Portal</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+//         <CalendarIcon size={14} />
+//         <span>Appointment</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+//         <StethoscopeIcon size={14} />
+//         <span>Find Doctor</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+//         <PhoneIcon size={14} />
+//         <span>Contact us</span>
+//       </button>
+//       <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+//         <StarIcon size={14} />
+//         <span>Rate Us</span>
+//       </button>
+//     </header>
+//   );
 // }
 
-
 function Header() {
+  const navigate = useNavigate();
+
   const handleNoAction = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent any action
   };
 
   return (
     <header className="bg-teal-950 text-white p-2 flex items-center space-x-2 overflow-x-auto text-sm">
-      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+      {/* 🏠 Home (Back Functionality) */}
+      <button
+        onClick={() => navigate(-1)}
+        className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition"
+      >
         <HomeIcon size={14} />
         <span>Home</span>
       </button>
-      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+
+      {/* Non-functional Links */}
+      <button
+        onClick={handleNoAction} // Prevent action on click
+        className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition"
+      >
         <InfoIcon size={14} />
         <span>About</span>
       </button>
-      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+
+      <button
+        onClick={handleNoAction} // Prevent action on click
+        className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition"
+      >
         <NewspaperIcon size={14} />
         <span>News</span>
       </button>
-      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+
+      <button
+        onClick={handleNoAction} // Prevent action on click
+        className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition"
+      >
         <WrenchIcon size={14} />
         <span>Service</span>
       </button>
-      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+
+      <button
+        onClick={handleNoAction} // Prevent action on click
+        className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition"
+      >
         <UserIcon size={14} />
         <span>Patient Portal</span>
       </button>
-      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+
+      <button
+        onClick={handleNoAction} // Prevent action on click
+        className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition"
+      >
         <CalendarIcon size={14} />
         <span>Appointment</span>
       </button>
-      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+
+      <button
+        onClick={handleNoAction} // Prevent action on click
+        className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition"
+      >
         <StethoscopeIcon size={14} />
         <span>Find Doctor</span>
       </button>
-      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+
+      <button
+        onClick={handleNoAction} // Prevent action on click
+        className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition"
+      >
         <PhoneIcon size={14} />
         <span>Contact us</span>
       </button>
-      <button onClick={handleNoAction} className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition">
+
+      <button
+        onClick={handleNoAction} // Prevent action on click
+        className="flex items-center space-x-1 whitespace-nowrap px-2 py-1 rounded-md hover:bg-teal-800 transition"
+      >
         <StarIcon size={14} />
         <span>Rate Us</span>
       </button>
     </header>
   );
 }
+
+
 
 
 // Footer Component
@@ -783,9 +892,9 @@ export function BookAppointmentPage() {
     appointmentDate: "",
     appointmentTime: "",
     reason: "",
-    is: false,
+    isExistingPatient: false, // ✅ changed from is: false
   });
-
+  
   const [showPreview, setShowPreview] = useState(false);
 
   const fixedTimeSlots = [
